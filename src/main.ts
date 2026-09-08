@@ -1,7 +1,5 @@
 import './style.css'
 
-const token = import.meta.env.VITE_TMDB_TOKEN
-
 interface Movie {
   id: number
   title: string
@@ -13,33 +11,13 @@ interface Movie {
 }
 
 async function getMovies(): Promise<Movie[]> {
-  const pages = [1, 2, 3, 4, 5]
+  const response = await fetch('/api/movies')
 
-  const requests = pages.map(async (page) => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?with_genres=27&sort_by=vote_average.desc&vote_count.gte=1000&page=${page}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          accept: 'application/json',
-        },
-      }
-    )
+  if (!response.ok) {
+    throw new Error(`Movie request failed: ${response.status}`)
+  }
 
-    if (!response.ok) {
-      throw new Error(`TMDB request failed: ${response.status}`)
-    }
-
-    const data = await response.json()
-
-    return data.results as Movie[]
-  })
-
-  const results = await Promise.all(requests)
-
-  return results
-    .flat()
-    .filter((movie) => movie.poster_path !== null)
+  return response.json()
 }
 
 async function start() {
