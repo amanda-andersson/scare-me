@@ -2,6 +2,10 @@
 
 > Do you like scary movies?
 
+## Live Demo
+
+[View SCARE ME live](https://scare-me.vercel.app/)
+
 SCARE ME is a horror movie picker for those nights when you don't know what to watch.
 
 Press **SCARE ME** and the app randomly selects a horror movie, complete with its poster, release year, rating and overview.
