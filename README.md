@@ -10,6 +10,12 @@ SCARE ME is a horror movie picker for those nights when you don't know what to w
 
 Press **SCARE ME** and the app randomly selects a horror movie, complete with its poster, release year, rating and overview.
 
+## Preview
+
+![SCARE ME start screen](public/screenshots/start.png)
+
+![SCARE ME movie result](public/screenshots/movie.png)
+
 ## Features
 
 - Random horror movie selection
